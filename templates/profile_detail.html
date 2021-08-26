@@ -1,0 +1,14 @@
+{% include 'navbar.html' %}
+{% extends 'base.html' %} {% block content %}
+
+<link rel='stylesheet' href='/static/css/style.css'>
+{% if musician.teacher_or_student == True %}
+<div>Student</div>
+{% else %}
+<div>Teacher</div>
+{% endif %}
+<div><p>{{musician.name}}</p></div>
+<div><p>{{musician.instruments_played}}</p></div>
+<div><p>{{musician.bio}}</p></div>
+
+{% endblock %}
