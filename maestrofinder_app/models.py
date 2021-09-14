@@ -13,7 +13,7 @@ class Musician(models.Model):
         return self.name
 
 class Request(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.ForeignKey(Musician, on_delete=models.CASCADE)
     teacher_or_student = models.BooleanField()
     text = models.TextField()
 

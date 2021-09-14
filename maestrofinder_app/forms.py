@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
-from maestrofinder_app.models import Musician, Request
+from maestrofinder_app.models import Musician
 
-class AddStudentForm(forms.Form):
+class StudentSignupForm(forms.Form):
     name = forms.CharField(max_length=100)
     teacher_or_student_choices = (
                 (False, 'Student')
@@ -11,7 +11,7 @@ class AddStudentForm(forms.Form):
     username = forms.CharField(max_length=150)
     password = forms.CharField(widget=forms.PasswordInput)
 
-class AddTeacherForm(forms.Form):
+class TeacherSignupForm(forms.Form):
     name = forms.CharField(max_length=100)
     teacher_or_student_choices = (
                 (True, 'Teacher')
@@ -20,18 +20,8 @@ class AddTeacherForm(forms.Form):
     username = forms.CharField(max_length=150)
     password = forms.CharField(widget=forms.PasswordInput)
 
-class AddProfileForm(forms.Form):
-    name = forms.CharField(max_length=100)
-    teacher_or_student_choices = (
-                (True, 'Teacher'),
-                (False, 'Student')
-            )
-    teacher_or_student = forms.ChoiceField(choices = teacher_or_student_choices, label='Teacher or Student', initial='', widget=forms.Select(), required=True)
-    instruments_played = forms.CharField(widget=forms.Textarea)
-    bio = forms.CharField(widget=forms.Textarea)
-
 class RequestForm(forms.Form):
-    name = forms.CharField(max_length=100)
+    name = forms.ModelChoiceField(queryset=Musician.objects.all())
     teacher_or_student_choices = (
                 (True, 'Teacher'),
                 (False, 'Student')
