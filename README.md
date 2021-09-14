@@ -1,2 +1,1 @@
-# MaestroFinder
-MaestroFinder is an app that connects music students with music teachers.
+MaestroFinder is an app that connects music students with music teachers. It is a work in progress.

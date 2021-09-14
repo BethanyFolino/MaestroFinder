@@ -18,9 +18,11 @@ from django.urls import path
 from maestrofinder_app import views
 
 urlpatterns = [
-    path('profile/<int:id>/', views.profile_detail),
-    path('addprofile/', views.add_profile, name='addprofile'),
+    path('user/<int:id>/', views.user_detail, name='userdetail'),
+    path('request/<int:id>/', views.request_detail, name='requestdetail'),
+    path('signup/', views.signup, name='signup'),
     path('makerequest/', views.make_request, name='makerequest'),
+    path('requests/', views.request_view, name='requests'),
     path('', views.index_view, name='home'),
     path('admin/', admin.site.urls),
     path('login/', views.login_view, name='login'),
